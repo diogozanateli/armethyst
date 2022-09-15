@@ -339,18 +339,18 @@ int BasicCPU::decodeBranches() {
 }
 
 /**
- * ATIVIDADE FUTURA: Decodifica instruções do grupo
+ * ATIVIDADE FUTURA Decodifica instruções do grupo
  * 		x1x0 Loads and Stores on page C4-246
  *
  * Retorna 0: se executou corretamente e
  *		   1: se a instrução não estiver implementada.
  */
 int BasicCPU::decodeLoadStore() {
+	// instrução não implementada
 	unsigned int n,d;
 	// instrução não implementada
 	switch (IR & 0xFFC00000) {
-		case 0xB9800000://LDRSW C6.2.131 Immediate (Unsigned offset) 913
-			// Como é escrita em 64 bits, não há problemas em decodificar
+		case 0xB9800000://LDRSW
 			n = (IR & 0x000003e0) >> 5;
 			if (n == 31) {
 				A = SP;
@@ -371,7 +371,7 @@ int BasicCPU::decodeLoadStore() {
 			MemtoReg=true;
 
 			return 0;
-		case 0xB9400000://LDR C6.2.119 Immediate (Unsigned offset) 886
+		case 0xB9400000://LDR
 		//32 bits
 			n = (IR & 0x000003E0) >> 5;
 			if (n == 31) {
@@ -401,7 +401,7 @@ int BasicCPU::decodeLoadStore() {
 			MemtoReg=true;
 
 			return 0;
-		case 0xB9000000://STR C6.2.257 Unsigned offset 1135
+		case 0xB9000000://STR
 			//size = 10, 32 bit
 			n = (IR & 0x000003E0) >> 5;
 			if (n == 31) {
@@ -434,8 +434,7 @@ int BasicCPU::decodeLoadStore() {
 			return 0;
 	}
 	switch (IR & 0xFFE0FC00) {
-		//1111 1111 1110 0000 1111 1100 0000 0000
-		case 0xB8607800://LDR (Register) C6.2.121 891
+		case 0xB8607800://LDR
 			n = (IR & 0x000003E0) >> 5;
 			if (n == 31) {
 				A = SP;
@@ -467,7 +466,39 @@ int BasicCPU::decodeLoadStore() {
 			return 0;
 
 	}
+
+	switch (IR & 0xFFE00C00){
+
+		case 0xF8201800:
+			uint numero = (IR & 0x60000000) >> 30;
+			uint opcao = (IR & 0x0000E000) >> 13;
+
+			uint aux = (IR & 0x00004000) >> 14;
+
+			if (aux == 0) {
+				
+			}else{
+				
+			}
+) 
+		return 0;	
+
+	}
 	return 1;
+}
+
+
+uint BasicCPU::decodeRegExtend(uint opcao) {
+
+	if (opcao == 000) {
+		return  ExtendType_UXTB;
+	} else	if (opcao == 001) {
+		return  ExtendType_UXTH;
+	} else	if (opcao == 100) {
+		return  ExtendType_SXTB;
+	} else	if (opcao == 101) {
+		return  ExtendType_SXTH;
+	}
 }
 
 /**
