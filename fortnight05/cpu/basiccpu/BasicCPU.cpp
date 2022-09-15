@@ -35,10 +35,10 @@
 /*
 TRABALHO FINAL - ARQUITETURA DE COMPUTADORES I
 
-Equipe:
+Grupo:
+David de Jesus Costa
 Diogo Zanateli de Souza Santos
-Eduardo Oliveira Gomes
-Gabriel Marcos Lopes
+Marcelo Aparecido Monteiro Júnior
 
 */
 
@@ -98,7 +98,7 @@ void BasicCPU::IF()
  * posteriores.
  *
  * Escreve A, B e ALUctrl para o estágio EXI
- * ATIVIDADE FUTURA: escreve registradores para os estágios EXF, MEM e WB.
+ * ATIVIDADE FUTURA escreve registradores para os estágios EXF, MEM e WB.
  *
  * Retorna 0: se executou corretamente e
  *		   1: se a instrução não estiver implementada.
@@ -232,7 +232,7 @@ int BasicCPU::decodeDataProcImm() {
 }
 
 /**
- * ATIVIDADE FUTURA: Decodifica instruções do grupo
+ * ATIVIDADE FUTURA Decodifica instruções do grupo
  * 		101x Branches, Exception Generating and System instructions
  *
  * Retorna 0: se executou corretamente e
